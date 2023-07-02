@@ -1,0 +1,8 @@
+How to get top trak in country? 
+- Get Categories
+https://api.spotify.com/v1/browse/categories/{category_id}/playlists
+Imho there is no need for an new api call. Just add a two new Categories ("charts", "viral").
+- category_id = "charts" or "viral"
+- then, to the playlists at the end: /playlists?country={}
+{} is our two-sign country e.g. PL, GB
+toplists > playlists > 2? > tracks [0]
