@@ -50,6 +50,7 @@ print("'PY', 'PE', 'PH', 'PL', 'PT', 'SG', 'ES', 'SK', 'SE', 'CH', 'TW', 'TR', '
 print('')
 country = input('Choose a country: ')
 top_playlist = search_for_playlist(token, country)
+#print(top_playlist)
 
 tracks = top_playlist[0]["tracks"]["href"]
 
