@@ -44,9 +44,14 @@ def search_for_playlist(token, country):
     return json_result
 
 token = get_token()
-top_playlist = search_for_playlist(token, "GB")
+print("country_codes= ['AD', 'AR', 'AU', 'AT', 'BE', 'BO', 'BR', 'BG', 'CA', 'CL', 'CO', 'CR', 'CY', 'CZ', 'DK', 'DO', 'EC', 'SV', 'EE', 'FI', 'FR', ")
+print("'DE', 'GR', 'GT', 'HN', 'HK', 'HU', 'IS', 'ID', 'IE', 'IT', 'JP', 'LV', 'LI', 'LT', 'LU', 'MY', 'MT', 'MX', 'MC', 'NL', 'NZ', 'NI', 'NO', 'PA', ")
+print("'PY', 'PE', 'PH', 'PL', 'PT', 'SG', 'ES', 'SK', 'SE', 'CH', 'TW', 'TR', 'GB', 'US', 'UY']")
+print('')
+country = input('Choose a country: ')
+top_playlist = search_for_playlist(token, country)
 print(top_playlist)
-tracks = top_playlist['tracks']
+#tracks = top_playlist['tracks']
 
 #for track in tracks:
 #    print(track['href'])
