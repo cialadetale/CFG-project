@@ -50,8 +50,22 @@ print("'PY', 'PE', 'PH', 'PL', 'PT', 'SG', 'ES', 'SK', 'SE', 'CH', 'TW', 'TR', '
 print('')
 country = input('Choose a country: ')
 top_playlist = search_for_playlist(token, country)
-print(top_playlist)
-#tracks = top_playlist['tracks']
 
-#for track in tracks:
-#    print(track['href'])
+tracks = top_playlist[0]["tracks"]["href"]
+
+def search_for_track(token, country):
+    url = tracks
+    headers = get_auth_header(token)
+    query = f"?country={country}&limit=1"
+    url_query = url + query
+
+    result = get(url_query, headers=headers)
+    json_result = json.loads(result.content)["items"][0]
+    return json_result
+
+number_one = search_for_track(token, country)
+artists = number_one["track"]["artists"]
+for artist in artists:
+    print(artist["name"])
+track = number_one["track"]["name"]
+print(track)
