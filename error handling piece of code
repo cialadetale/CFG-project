@@ -1,0 +1,19 @@
+import requests
+import json
+
+def search_for_playlist(token, country_iso2):
+    url = "https://api.spotify.com/v1/browse/categories/toplists/playlists"
+    headers = get_auth_header(token)
+    query = f"?country={country_iso2}&limit=1"
+    url_query = url + query
+
+    try:
+        result = requests.get(url_query, headers=headers)
+        result.raise_for_status()  # Raise an exception if the request was not successful
+        json_result = json.loads(result.content)["playlists"]["items"]
+        return json_result
+    except requests.exceptions.RequestException as e:
+        print("An error occurred while making the request:", str(e))
+    except (KeyError, ValueError) as e:
+        print("An error occurred while parsing the response:", str(e))
+    return None
