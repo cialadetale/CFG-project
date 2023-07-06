@@ -109,9 +109,10 @@ query = youtube.search().list(
     q=f"{track} + {authors}"
 )
 result = query.execute()
-# pprint(result)
+# print(result)
 # getting
 video_id = result["items"][0]["id"]["videoId"]
 
 # getting a link to searched video
 video_link = f"https://www.youtube.com/watch?v={video_id}"
+print(video_link)
