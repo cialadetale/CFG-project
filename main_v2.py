@@ -13,7 +13,7 @@ import os
 import base64
 from requests import post, get
 import country_converter as coco
-from googleapiclient.discovery import build
+#from googleapiclient.discovery import build
 
 
 # start of authorization
@@ -23,7 +23,7 @@ load_dotenv()
 # your CLIENT_ID and CLIENT_SECRET have to be put into .env file (use yours id and secret)
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
-youtube_key = os.getenv("api_key")
+#youtube_key = os.getenv("api_key")
 
 
 # function to get token/authorization from Spotify API
@@ -97,7 +97,7 @@ track = number_one["track"]["name"]
 
 print(f'The most popular track in {country} is {track} by {(", ".join(authors))}')
 
-
+'''
 # using build module to get authorization from YouTube vol.3 API
 youtube = build("youtube", "v3", developerKey=youtube_key)
 
@@ -115,3 +115,4 @@ video_id = result["items"][0]["id"]["videoId"]
 
 # getting a link to searched video
 video_link = f"https://www.youtube.com/watch?v={video_id}"
+'''
