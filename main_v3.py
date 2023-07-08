@@ -66,14 +66,17 @@ def search_for_playlist(token, country_iso2):
 
 # converting country name given by the user to iso2 standard (required by SpotifyAPI)
 country = input('Please select a country: ')
+print()
 country_iso2 = coco.convert(names=country, to='ISO2')
+
 
 # getting a playlist
 top_playlist = search_for_playlist(token, country_iso2)
 
+
 # getting a href (link)
 tracks = top_playlist[0]["tracks"]["href"]
-print(tracks)
+
 
 # function to get the top song in a specified country
 def search_for_track(token, country_iso2):
@@ -97,6 +100,7 @@ for artist in artists:
 track = number_one[0]["track"]["name"]
 
 print(f'The most popular track in {country} is {track} by {(", ".join(authors))}')
+print()
 
 
 # using build module to get authorization from YouTube vol.3 API
@@ -110,13 +114,12 @@ query = youtube.search().list(
     q=f"{track} + {authors}"
 )
 result = query.execute()
-# print(result)
-# getting
 video_id = result["items"][0]["id"]["videoId"]
 
 # getting a link to searched video
 video_link = f"https://www.youtube.com/watch?v={video_id}"
 print(video_link)
+print()
 
 
 # getting top ten songs from Spotify API
@@ -129,8 +132,11 @@ for idx, song in enumerate(top_ten_tracks[0:10]):
     for artist in artists:
         singers.append(artist["name"])
     print(f"{idx + 1}. {name} - {(', '.join(singers))}")
+    print()
 
-    answer = input('Do you want a YouTube link to this song? y/n: ')
+    print('Do you want an YouTube link to this song?')
+    answer = input("Choose 'y' if yes, 'n' if no, 'end' if you don'tt want to see any more song: ")
+
     if answer == 'y':
         query = youtube.search().list(
             part="snippet",
@@ -143,5 +149,10 @@ for idx, song in enumerate(top_ten_tracks[0:10]):
         # getting a link to searched video
         video_link = f"https://www.youtube.com/watch?v={video_id}"
         print(video_link)
-    else:
+        print()
+    elif answer == 'n':
+        print()
         pass
+    else:
+        print('Thanks!')
+        break
