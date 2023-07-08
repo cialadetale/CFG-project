@@ -95,7 +95,7 @@ for artist in artists:
 # getting track title and printing it
 track = number_one["track"]["name"]
 
-print(f'The most popular track in {country} is {track} by {(", ".join(authors))}')
+print(f'The most popular track in {country.capitalize()} is "{track}" by {(", ".join(authors))}')
 
 
 # using build module to get authorization from YouTube vol.3 API
@@ -115,3 +115,5 @@ video_id = result["items"][0]["id"]["videoId"]
 
 # getting a link to searched video
 video_link = f"https://www.youtube.com/watch?v={video_id}"
+print(video_link)
+
