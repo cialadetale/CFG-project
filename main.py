@@ -53,7 +53,8 @@ def get_auth_header(token):
     return {"Authorization": "Bearer " + token}
 
 
-# function to get one, searched playlist - later from this playlist we take tracks url to get the first song in the country: error handling with TRY
+# function to get one, searched playlist - later from this playlist we take tracks url to get the first
+# song in the country: error handling with TRY
 def search_for_playlist(token, country_iso2):
     url = "https://api.spotify.com/v1/browse/categories/toplists/playlists"
     headers = get_auth_header(token)
@@ -71,11 +72,11 @@ def search_for_playlist(token, country_iso2):
         print("An error occurred while parsing the response:", str(e))
     return None
 
+
 # converting country name given by the user to iso2 standard (required by SpotifyAPI) added capitalization
 country = input('Please select a country: ')
 print()
 country_iso2 = coco.convert(names=country, to='ISO2').upper()
-
 
 
 # getting a playlist
@@ -109,7 +110,6 @@ track = number_one[0]["track"]["name"]
 
 print(f'The most popular track in {country.capitalize()} is {track} by {(", ".join(authors))}')
 print()
-
 
 
 # using build module to get authorization from YouTube vol.3 API
