@@ -144,7 +144,7 @@ for idx, song in enumerate(top_ten_tracks[0:10]):
     print()
 
     print('Do you want an YouTube link to this song?')
-    answer = input("Choose 'y' if yes, 'n' if no, 'end' if you don'tt want to see any more song: ")
+    answer = input("Choose 'y' if yes, 'n' if no, 'end' if you don't want to see any more song: ")
 
     if answer == 'y':
         query = youtube.search().list(
