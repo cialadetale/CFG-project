@@ -28,7 +28,7 @@ youtube_key = os.getenv("api_key")
 
 
 # function to get token/authorization from Spotify API
-def get_token(): 
+def get_token():
     auth_string = client_id + ":" + client_secret
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
@@ -108,9 +108,6 @@ for artist in artists:
 # getting track title and printing it
 track = number_one[0]["track"]["name"]
 
-print(f'The most popular track in {country.capitalize()} is {track} by {(", ".join(authors))}')
-print()
-
 
 # using build module to get authorization from YouTube vol.3 API
 youtube = build("youtube", "v3", developerKey=youtube_key)
@@ -125,15 +122,10 @@ query = youtube.search().list(
 result = query.execute()
 video_id = result["items"][0]["id"]["videoId"]
 
-# getting a link to searched video
-video_link = f"https://www.youtube.com/watch?v={video_id}"
-print(video_link)
-print()
-
 
 # getting top ten songs from Spotify API
 top_ten_tracks = search_for_track(token, country_iso2)
-print('List of the top ten songs: ')
+print(f'List of the top ten songs for {country.capitalize()}: ')
 for idx, song in enumerate(top_ten_tracks[0:10]):
     name = song["track"]['name']
     artists = song['track']['artists']
@@ -144,7 +136,7 @@ for idx, song in enumerate(top_ten_tracks[0:10]):
     print()
 
     print('Do you want an YouTube link to this song?')
-    answer = input("Choose 'y' if yes, 'n' if no, 'end' if you don't want to see any more song: ")
+    answer = input("Choose 'y' if yes, 'n' if no, 'end' if you don't want to see any more songs: ")
 
     if answer == 'y':
         query = youtube.search().list(
